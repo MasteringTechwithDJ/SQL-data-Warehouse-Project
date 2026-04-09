@@ -9,14 +9,30 @@ Script Purpose
     'Bronze', 'Silver', and Gold'.
 
 Warming :
-Running this script will drop the entire 'Datawarehouse' database if it exists. 
-All data in the database will be permanently deleted. Proceed with caution
-\and ensure you have proper backups before running the script. 
+    Running this script will drop the entire 'Datawarehouse' database if it exists. 
+    All data in the database will be permanently deleted. Proceed with caution
+    and ensure you have proper backups before running the script. 
 */
 
 USE MASTER;
 GO
 
 ---Drop and recreate the dataWarehouse's Database
-IF EXSISTS(SELECT 1 FROM sys.databases WHERE name = 'Datawahouse')
+IF EXSISTS(SELECT 1 FROM sys.databases WHERE name = 'DJDatawarehouse')
 BEGIN
+
+ALTER DATABASE DJDatawarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+GO
+
+--Create the DJDatawarehouse
+Create the DJDatawarehouse;
+GO
+
+---create  schemas 
+CREATE SCHEMA Bronze;
+GO
+CREARE SCHEMA Silver;
+GO
+CREATE SCHEMA Gold
+GO
