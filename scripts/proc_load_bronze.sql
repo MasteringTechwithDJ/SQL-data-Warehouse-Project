@@ -1,4 +1,4 @@
-/*
+
 ===============================================================================
 Stored Procedure: Load Bronze Layer (Source -> Bronze)
 ===============================================================================
@@ -28,3 +28,17 @@ WITH (
 );
 
 SELECT COUNT (*)  FROM bronze.crm_cust_info 
+
+---------------------------------------------
+
+
+BULK INSERT bronze.crm_prd_info
+FROM 'C:\Users\Jasmi\Downloads\prd_info.csv'
+WITH ( 
+	FIRSTROW = 2,
+	FIELDTERMINATOR = ',',
+	TABLOCK
+
+);
+
+
