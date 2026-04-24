@@ -13,9 +13,21 @@ Parameters:
 	  This stored procedure does not accept any parameters or return any values.
 */
 
-CREATE OR ALTER PROCEDURE bronze.load_broze 
+EXEC Bronze.load_broze
+
+CREATE OR ALTER PROCEDURE Bronze.load_broze 
 AS BEGIN
+		PRINT  '===================================';
+		PRINT  'Loading bronze Layer';
+		PRINT '=====================================';
+
+		PRINT '--------------------------------------';
+		PRINT 'Loading CRM Tables';
+		PRINT '--------------------------------------';
+
+		PRINT ' >> Truncating Table: Bronze.crm_cust_info';
 		TRUNCATE TABLE Bronze.crm_cust_info
+		PRINT ' >> Inserting Data Into Table: Bronze.crm_cust_info';
 		BULK INSERT bronze.crm_cust_info
 		FROM 'C:\Users\Jasmi\Downloads\cust_info.csv'
 		WITH ( 
@@ -23,7 +35,10 @@ AS BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+
+		PRINT ' >> Truncating Table: bronze.crm_prd_info';
 		TRUNCATE TABLE Bronze.crm_prd_info
+		PRINT ' >> Inserting Data Into Table: bronze.crm_prd_info';
 		BULK INSERT bronze.crm_prd_info
 		FROM 'C:\Users\Jasmi\Downloads\prd_info.csv'
 		WITH ( 
@@ -31,7 +46,10 @@ AS BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		
+		PRINT ' >> Truncating Table: bronze.crm_prd_info';
 		TRUNCATE TABLE Bronze.crm_sales_details
+		PRINT ' >> Inserting Data Into Table: Bronze.crm_sales_details';
 		BULK INSERT bronze.crm_sales_details
 		FROM 'C:\Users\Jasmi\Downloads\sales_details.csv'
 		WITH ( 
@@ -39,7 +57,14 @@ AS BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		
+		PRINT '--------------------------------------';
+		PRINT 'Loading ERP Tables';
+		PRINT '--------------------------------------';
+
+		PRINT ' >> Truncating Table:  Bronze.erp_cust_az12';
 		TRUNCATE TABLE Bronze.erp_cust_az12
+		PRINT '>> Inserting Data Into Table:Bronze.erp_cust_az12';
 		BULK INSERT bronze.erp_cust_az12
 		FROM 'C:\Users\Jasmi\Downloads\CUST_AZ12.csv'
 		WITH ( 
@@ -48,7 +73,10 @@ AS BEGIN
 			TABLOCK
 
 		);
+		
+		PRINT ' >> Truncating Table: bronze.erp_loc_a101';
 		TRUNCATE TABLE Bronze.erp_loc_a101
+		PRINT '>> Inserting Data Into Table: bronze.erp_loc_a101';
 		BULK INSERT bronze.erp_loc_a101
 		FROM 'C:\Users\Jasmi\Downloads\LOC_A101.csv'
 		WITH ( 
@@ -57,7 +85,10 @@ AS BEGIN
 			TABLOCK
 
 		);
+		
+		PRINT ' >> Truncating Table: Bronze.erp_px_cat_g1v2';
 		TRUNCATE TABLE Bronze.erp_px_cat_g1v2
+		PRINT ' >> Inserting Data Into Table: PX_CAT_G1V2.csv';
 		BULK INSERT bronze.erp_px_cat_g1v2
 		FROM 'C:\Users\Jasmi\Downloads\PX_CAT_G1V2.csv'
 		WITH ( 
