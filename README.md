@@ -25,6 +25,9 @@ Bronze.load_bronze
 
 This procedure automates the extraction and loading of CSV files into SQL Server tables using BULK INSERT.
 
+<img width="1631" height="836" alt="DataWarehouse " src="https://github.com/user-attachments/assets/78a0af3b-1dd5-4f38-8bc0-3e2d855491b9" />
+
+
 1. ETL Architecture
 
 The warehouse follows a layered data architecture:
